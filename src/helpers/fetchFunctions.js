@@ -5,10 +5,12 @@ export const fetchProduct = () => {
 const url = 'https://api.mercadolibre.com/sites/MLB/search?q=';
 
 export const fetchProductsList = async (para) => {
-  const um = await fetch(url + para);
-  const dados = await um.json();
-  return dados.results;
+  try {
+    if (!para) throw new Error('Termo de busca não informado');
+    const um = await fetch(url + para);
+    const dados = await um.json();
+    return dados.results;
+  } catch (error) {
+    return error.message;
+  }
 };
-
-console.log(fetchProductsList('computador'));
-console.log('oi');
