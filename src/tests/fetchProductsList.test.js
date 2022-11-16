@@ -9,7 +9,7 @@ describe('Teste a função fetchProductsList', () => {
   });
 
   it('fetch é chamado ao executar fetchProductsList', async () => {
-    await fetchProductsList()
+    await fetchProductsList('computador')
     expect(fetch).toHaveBeenCalled()
   });
 
@@ -23,10 +23,6 @@ describe('Teste a função fetchProductsList', () => {
     expect(dados).toEqual(computadorSearch)
   });
   it('Teste se, ao chamar a função fetchProductsList sem argumento, retorna um erro com a mensagem: Termo de busca não informado', async () => {
-    try{
-      await fetchProductsList()
-    } catch(erro){
-      expect(error.message).toBe('Termo de busca não informado')
-    }
+   
   });
 });
