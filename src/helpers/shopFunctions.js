@@ -45,9 +45,18 @@ export const getIdFromProduct = (product) => (
  * @param {Element} li - Elemento do produto a ser removido do carrinho.
  * @param {string} id - ID do produto a ser removido do carrinho.
  */
-const removeCartProduct = (li, id) => {
+
+const subtotal = document.querySelector('.total-price');
+let total = 0;
+
+function gersinei(preco) {
+  total += preco;
+  subtotal.innerText = total;
+}
+const removeCartProduct = (li, id, price) => {
   li.remove();
   removeCartID(id);
+  gersinei(-price);
 };
 
 /**
@@ -86,8 +95,8 @@ export const createCartProductElement = ({ id, title, price, pictures }) => {
     'delete',
   );
   li.appendChild(removeButton);
-
-  li.addEventListener('click', () => removeCartProduct(li, id));
+  gersinei(price);
+  li.addEventListener('click', () => removeCartProduct(li, id, price));
   return li;
 };
 
@@ -100,6 +109,7 @@ export const createCartProductElement = ({ id, title, price, pictures }) => {
  * @param {number} product.price - Preço do produto.
  * @returns {Element} Elemento de produto.
  */
+
 export const createProductElement = ({ id, title, thumbnail, price }) => {
   const section = document.createElement('section');
   section.className = 'product';
@@ -122,6 +132,7 @@ export const createProductElement = ({ id, title, thumbnail, price }) => {
     'Adicionar ao carrinho!',
   );
   section.appendChild(cartButton);
-
   return section;
 };
+
+console.log(total);

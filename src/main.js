@@ -36,6 +36,7 @@ const funcaoCriaElementos = async (para) => {
     div.appendChild(sunda);
   }
 };
+
 await funcaoCriaElementos('computador');
 
 const botao = document.querySelectorAll('.product__add');
@@ -46,3 +47,13 @@ botao.forEach((element) => element.addEventListener('click', async (event) => {
   const primeiro = await fetchProduct(alvo);
   olpai.appendChild(createCartProductElement(primeiro));
 }));
+
+const ovo = () => {
+  const hello = getSavedCartIDs()
+    .forEach(async (ele) => {
+      const oi = await fetchProduct(ele);
+      olpai.appendChild(createCartProductElement(oi));
+    });
+  return hello;
+};
+ovo();

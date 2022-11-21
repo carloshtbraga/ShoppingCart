@@ -9,10 +9,6 @@ function erro() {
 }
 
 export const getAddress = async () => {
-  // Promise.any([fetch(url + input.value),
-  // fetch(url2 + input.value)]).then((res) => res.json()).then((dois) => {
-  // adr.innerHTML = `${dois.address} - ${dois.district} - ${dois.city} - ${dois.state}`;
-  // });
   const um = url + input.value;
   const doiss = url2 + input.value;
   const retorno = await Promise.any([fetch(um), fetch(doiss)]);
