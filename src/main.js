@@ -52,7 +52,7 @@ const ovo = () => {
   const hello = getSavedCartIDs()
     .forEach(async (ele) => {
       const oi = await fetchProduct(ele);
-      olpai.appendChild(createCartProductElement(oi));
+      await Promise.all([olpai.appendChild(createCartProductElement(oi))]);
     });
   return hello;
 };

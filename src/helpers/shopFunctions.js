@@ -51,7 +51,7 @@ let total = 0;
 
 function gersinei(preco) {
   total += preco;
-  subtotal.innerText = total;
+  subtotal.innerText = total.toFixed(2);
 }
 const removeCartProduct = (li, id, price) => {
   li.remove();
